@@ -71,6 +71,7 @@ Watch a full walkthrough of Reminisce — uploading a photo, picking a film stoc
 - **Undo/Redo** - Full history with `Ctrl+Z` / `Ctrl+Shift+Z` support
 - **Copy to Clipboard** - One-click copy for quick social sharing
 - **Reset All** - Instantly restore default settings
+- **Built-in Tutorial** - Watch the video walkthrough right inside the app from the Tutorial button
 - **EXIF Extraction** - Auto-reads camera metadata from uploaded images
 
 #### 📱 Export & Responsive

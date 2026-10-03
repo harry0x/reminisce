@@ -57,3 +57,9 @@ export const ASPECT_RATIOS: AspectRatio[] = [
   { id: '16:9', label: '16:9', ratio: 1.77, cssClass: 'aspect-video' },
   { id: '2:3', label: '2:3', ratio: 0.66, cssClass: 'aspect-[2/3]' },
 ];
+
+// Tutorial video hosted on Cloudinary (also linked from the README)
+export const TUTORIAL_VIDEO_URL =
+  'https://res.cloudinary.com/tonojvru/video/upload/v1791050480/reminisce-tutorial.mp4';
+export const TUTORIAL_POSTER_URL =
+  'https://res.cloudinary.com/tonojvru/video/upload/so_2,w_1200/v1791050480/reminisce-tutorial.jpg';

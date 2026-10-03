@@ -4,9 +4,10 @@ import React, { useState, useRef, useCallback, useEffect } from 'react';
 import { toBlob } from 'html-to-image';
 import { Sidebar } from './components/Sidebar';
 import PhotoCard from './components/PhotoCard';
+import TutorialModal from './components/TutorialModal';
 import { FILM_STOCKS, PAPERS, ASPECT_RATIOS, FRAMES } from './constants';
 import { FilmStock, PaperType, AspectRatio, PhotoMetadata, FontFamily, FrameType } from './types';
-import { ArrowDownToLine, Loader2, Copy, RotateCcw, Undo2, Redo2 } from 'lucide-react';
+import { ArrowDownToLine, Loader2, Copy, RotateCcw, Undo2, Redo2, PlayCircle } from 'lucide-react';
 
 const getRandomImageUrl = () => {
   const randomId = Math.floor(Math.random() * 1000);
@@ -81,6 +82,10 @@ const App: React.FC = () => {
   // Toast notification state
   const [toast, setToast] = useState<string | null>(null);
   const showToast = useCallback((message: string) => setToast(message), []);
+
+  // Tutorial video modal
+  const [isTutorialOpen, setIsTutorialOpen] = useState(false);
+  const closeTutorial = useCallback(() => setIsTutorialOpen(false), []);
 
   // Undo/Redo History
   const [history, setHistory] = useState<SettingsState[]>([]);
@@ -441,6 +446,20 @@ const App: React.FC = () => {
 
         {/* Floating Action Buttons */}
         <div className="absolute top-3 right-3 sm:top-6 sm:right-6 z-50 flex items-center gap-1.5 sm:gap-2">
+          {/* Tutorial Button */}
+          <button
+            type="button"
+            onClick={() => setIsTutorialOpen(true)}
+            className="flex items-center justify-center gap-1.5 h-8 w-8 sm:h-9 sm:w-auto sm:px-4 bg-white text-[#1C1C1C] rounded-full shadow-md hover:bg-gray-100 transition-all border border-gray-200"
+            title="Watch Tutorial"
+            aria-label="Watch tutorial"
+          >
+            <PlayCircle className="w-3.5 h-3.5" />
+            <span className="hidden sm:inline font-mono text-[10px] tracking-wider uppercase">
+              Tutorial
+            </span>
+          </button>
+
           {/* Undo/Redo Group */}
           <div className="flex items-center bg-white rounded-full shadow-md border border-gray-200">
             <button
@@ -565,6 +584,9 @@ const App: React.FC = () => {
 
       {/* Toast Notification */}
       {toast && <Toast message={toast} onClose={() => setToast(null)} />}
+
+      {/* Tutorial Video Modal */}
+      {isTutorialOpen && <TutorialModal onClose={closeTutorial} />}
     </div>
   );
 };
