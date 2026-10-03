@@ -25,9 +25,13 @@
 
 Watch a full walkthrough of Reminisce — uploading a photo, picking a film stock, fine-tuning effects, framing, and exporting your print.
 
-<video src="assets/reminisce-tutorial.mp4" autoplay muted loop playsinline controls width="100%"></video>
+<p align="center">
+  <a href="https://res.cloudinary.com/tonojvru/video/upload/v1791050480/reminisce-tutorial.mp4">
+    <img src="https://res.cloudinary.com/tonojvru/video/upload/so_2,w_1200/v1791050480/reminisce-tutorial.jpg" alt="Reminisce video tutorial — click to play" width="100%" />
+  </a>
+</p>
 
-▶️ **[Watch / download the tutorial video](assets/reminisce-tutorial.mp4)**
+<p align="center">▶️ <strong><a href="https://res.cloudinary.com/tonojvru/video/upload/v1791050480/reminisce-tutorial.mp4">Click to watch the full tutorial</a></strong></p>
 
 ---
 
