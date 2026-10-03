@@ -6,7 +6,7 @@
   <h1>Reminisce.</h1>
   <p><em>Analog Lab & Archive</em></p>
   <p>Transform your photos into beautiful analog film-style prints with customizable film stocks, paper types, and typography.</p>
-  
+
   <p>
     <a href="https://reminisce-brown.vercel.app/">
       <img src="https://img.shields.io/badge/Live-Demo-000000?style=for-the-badge&logo=vercel&logoColor=white" alt="Live Demo" />
@@ -14,6 +14,12 @@
     <a href="https://github.com/harry0x/reminisce">
       <img src="https://img.shields.io/badge/GitHub-Repository-181717?style=for-the-badge&logo=github" alt="GitHub Repository" />
     </a>
+  </p>
+
+  <p>
+    <a href="https://github.com/harry0x/reminisce/actions/workflows/ci.yml"><img src="https://github.com/harry0x/reminisce/actions/workflows/ci.yml/badge.svg" alt="CI" /></a>
+    <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-blue.svg" alt="MIT License" /></a>
+    <a href="CONTRIBUTING.md"><img src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg" alt="PRs Welcome" /></a>
   </p>
 
   <p>🌐 <strong>Live:</strong> <a href="https://reminisce-brown.vercel.app/">reminisce-brown.vercel.app</a></p>
@@ -35,7 +41,6 @@ Watch a full walkthrough of Reminisce — uploading a photo, picking a film stoc
 
 ---
 
-
 ## 📸 About
 
 **Reminisce.** is a web application that transforms digital photos into beautiful analog film-style photo cards. It offers a curated selection of film stocks, paper textures, aspect ratios, and typography options to create stunning, gallery-ready prints.
@@ -43,33 +48,39 @@ Watch a full walkthrough of Reminisce — uploading a photo, picking a film stoc
 ### ✨ Features
 
 #### 🎞️ Film & Effects
+
 - **Film Stock Presets** - Choose from multiple film emulations (Portra 400, Ilford HP5, Cinestill 800T, Ektar 100, and more)
 - **Granular Controls** - Fine-tune Grain, Vignette, and Warmth with precise sliders
 - **Real-time Preview** - See your changes instantly as you customize
 
 #### 🖼️ Frame Styles
+
 - **Standard** - Clean gallery-style presentation
 - **Film Strip** - Authentic 35mm film look with sprocket holes (auto-orientation)
 - **Polaroid** - Classic instant-film aesthetic with signature chin
 
 #### 📄 Paper & Typography
+
 - **Paper Types** - Select from different paper bases (Alabaster, Exhibition White, Matte Black, Kraft)
 - **Custom Typography** - Add captions with different font styles (Serif, Script, Mono)
 - **Aspect Ratios** - Multiple formats including 1:1, 4:5, 16:9, and 2:3
 - **Image Position** - Reframe your photo inside the print with vertical and horizontal sliders (plus step buttons)
 
 #### 🚀 Productivity
+
 - **Undo/Redo** - Full history with `Ctrl+Z` / `Ctrl+Shift+Z` support
 - **Copy to Clipboard** - One-click copy for quick social sharing
 - **Reset All** - Instantly restore default settings
 - **EXIF Extraction** - Auto-reads camera metadata from uploaded images
 
 #### 📱 Export & Responsive
+
 - **High-Res Export** - Download 2x resolution PNG exports
 - **Fully Responsive** - Optimized for both mobile and desktop
 - **Drag & Drop** - Easy image upload
 
 ## 🚀 Getting Started
+
 ### Installation
 
 1. **Clone the repository**
@@ -133,11 +144,11 @@ npm run preview
 
 ## ⌨️ Keyboard Shortcuts
 
-| Shortcut | Action |
-|----------|--------|
-| `Ctrl+Z` | Undo |
-| `Ctrl+Shift+Z` | Redo |
-| `Ctrl+Y` | Redo (alternative) |
+| Shortcut       | Action             |
+| -------------- | ------------------ |
+| `Ctrl+Z`       | Undo               |
+| `Ctrl+Shift+Z` | Redo               |
+| `Ctrl+Y`       | Redo (alternative) |
 
 ## 🎯 Mobile Experience
 
@@ -146,14 +157,23 @@ The app is fully responsive with a mobile-first design:
 - **Mobile**: Header → Image Preview → Controls (scrollable)
 - **Desktop**: Sidebar (controls) on left, Image Preview on right
 
-
 ## 📝 Notes
 
 - The default image uses Picsum Photos service
 - Images are automatically converted to base64 format to ensure consistent exports
 - For best results, use images with good resolution (800x1000px or higher recommended)
 
+## 🤝 Contributing
 
+Contributions are welcome! Whether it's a bug report, a new film stock, or a UI improvement:
+
+- 🐛 [Report a bug](https://github.com/harry0x/reminisce/issues/new?template=bug_report.yml)
+- ✨ [Request a feature](https://github.com/harry0x/reminisce/issues/new?template=feature_request.yml)
+- 🔧 Read the [Contributing Guide](CONTRIBUTING.md) to set up the project and open a pull request
+
+Before opening a PR, run `npm run check` (lint, format, typecheck, build). The same checks run in CI.
+
+Please follow our [Code of Conduct](CODE_OF_CONDUCT.md). To report a security issue, see [SECURITY.md](SECURITY.md).
 
 ## 📄 License
 
