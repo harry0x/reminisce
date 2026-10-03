@@ -1,12 +1,5 @@
 import React, { useMemo } from 'react';
-import {
-  AspectRatio,
-  FilmStock,
-  PaperType,
-  PhotoMetadata,
-  FontFamily,
-  FrameType,
-} from '../types';
+import { AspectRatio, FilmStock, PaperType, PhotoMetadata, FontFamily, FrameType } from '../types';
 import { NOISE_TEXTURE } from '../constants';
 
 interface PhotoCardProps {
@@ -75,21 +68,23 @@ const PhotoCard: React.FC<PhotoCardProps> = ({
 
   // Determine footer positioning
   const isPolaroid = frame.id === 'polaroid';
-  const footerClass = isPolaroid 
-    ? 'absolute bottom-4 left-4 right-4 px-4' 
+  const footerClass = isPolaroid
+    ? 'absolute bottom-4 left-4 right-4 px-4'
     : 'w-full flex justify-between items-end px-1 mt-1';
 
   return (
     <div
       ref={innerRef}
       className={`relative transition-all duration-500 ease-in-out shadow-[0_15px_30px_-5px_rgba(0,0,0,0.15)] rounded-lg ${frameClass}`}
-      style={{ 
-        backgroundColor: paper.hex,
-        width: '480px',
-        padding: isPolaroid ? undefined : '48px',
-        '--hole-color': isDarkPaper ? 'rgba(255,255,255,0.4)' : 'rgba(0,0,0,0.2)',
-        '--border-color': isDarkPaper ? 'rgba(255,255,255,0.2)' : 'rgba(0,0,0,0.1)',
-      } as React.CSSProperties}
+      style={
+        {
+          backgroundColor: paper.hex,
+          width: '480px',
+          padding: isPolaroid ? undefined : '48px',
+          '--hole-color': isDarkPaper ? 'rgba(255,255,255,0.4)' : 'rgba(0,0,0,0.2)',
+          '--border-color': isDarkPaper ? 'rgba(255,255,255,0.2)' : 'rgba(0,0,0,0.1)',
+        } as React.CSSProperties
+      }
     >
       {/* Paper Grain Overlay */}
       <div
@@ -107,13 +102,13 @@ const PhotoCard: React.FC<PhotoCardProps> = ({
           className={`relative overflow-hidden w-full max-w-full max-h-full ${aspectRatio.cssClass} transition-all duration-500 ${isPolaroid ? 'rounded-sm' : 'rounded'}`}
         >
           {/* Vignette Overlay */}
-          <div 
+          <div
             className="absolute inset-0 z-10 pointer-events-none transition-all duration-300"
             style={{
               boxShadow: `inset 0 0 ${vignette * 2}px rgba(0,0,0,${vignette / 120})`,
             }}
           />
-          
+
           {image && (
             <img
               src={image}
@@ -133,9 +128,7 @@ const PhotoCard: React.FC<PhotoCardProps> = ({
           <div className="w-full flex justify-between items-end px-1 mt-1">
             <div className="flex flex-col gap-2 max-w-[70%] pt-4">
               {caption && (
-                <h2
-                  className={`${fontClass} ${textColor} text-xl break-words leading-tight mt-1`}
-                >
+                <h2 className={`${fontClass} ${textColor} text-xl break-words leading-tight mt-1`}>
                   {caption}
                 </h2>
               )}
@@ -168,9 +161,7 @@ const PhotoCard: React.FC<PhotoCardProps> = ({
               {caption}
             </h2>
           )}
-          <div
-            className={`font-mono text-[8px] tracking-[0.2em] uppercase ${secondaryColor} mt-2`}
-          >
+          <div className={`font-mono text-[8px] tracking-[0.2em] uppercase ${secondaryColor} mt-2`}>
             {metadata.date}
           </div>
         </div>

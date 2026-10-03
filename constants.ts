@@ -1,4 +1,4 @@
-import { AspectRatio, FilmStock, PaperType, FrameType } from "./types";
+import { AspectRatio, FilmStock, PaperType, FrameType } from './types';
 
 // ... (FILM_STOCKS, PAPERS, ASPECT_RATIOS remain same)
 
@@ -41,7 +41,7 @@ export const FILM_STOCKS: FilmStock[] = [
     name: 'Ektar 100',
     cssFilter: 'saturate(1.5) contrast(1.1) brightness(0.95)',
     description: 'Vivid, punchy colors',
-  }
+  },
 ];
 
 export const PAPERS: PaperType[] = [
@@ -57,5 +57,3 @@ export const ASPECT_RATIOS: AspectRatio[] = [
   { id: '16:9', label: '16:9', ratio: 1.77, cssClass: 'aspect-video' },
   { id: '2:3', label: '2:3', ratio: 0.66, cssClass: 'aspect-[2/3]' },
 ];
-
-

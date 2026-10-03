@@ -1,16 +1,7 @@
 import React from 'react';
 import { FilmStock, PaperType, AspectRatio, FontFamily, FrameType } from '../types';
 import { FILM_STOCKS, PAPERS, ASPECT_RATIOS, FRAMES } from '../constants';
-import {
-  Upload,
-  Type,
-  Aperture,
-  Layout,
-  Palette,
-  ArrowUpDown,
-  Sliders,
-  Frame,
-} from 'lucide-react';
+import { Upload, Type, Aperture, Layout, Palette, ArrowUpDown, Sliders, Frame } from 'lucide-react';
 
 interface SidebarProps {
   currentFilter: FilmStock;
@@ -38,8 +29,6 @@ interface SidebarProps {
   setFrame: (f: FrameType) => void;
 }
 
-
-
 const SidebarSection: React.FC<{
   title: string;
   icon: React.ReactNode;
@@ -48,9 +37,7 @@ const SidebarSection: React.FC<{
   <div className="mb-6 sm:mb-8 md:mb-10">
     <div className="flex items-center gap-2 sm:gap-3 mb-3 sm:mb-4 text-[#1C1C1C] opacity-60">
       {icon}
-      <h3 className="font-mono text-[10px] sm:text-xs uppercase tracking-[0.2em]">
-        {title}
-      </h3>
+      <h3 className="font-mono text-[10px] sm:text-xs uppercase tracking-[0.2em]">{title}</h3>
     </div>
     {children}
   </div>
@@ -85,9 +72,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
     <aside className="w-full md:w-[380px] bg-white border-t md:border-t-0 md:border-r border-[#E5E5E5] h-auto md:h-full md:max-h-none overflow-y-auto z-40 flex flex-col order-2 md:order-1 flex-shrink-0">
       {/* Header - Only visible on desktop */}
       <div className="hidden md:block p-4 sm:p-6 md:p-8 pb-3 sm:pb-4 border-b border-[#E5E5E5] flex-shrink-0">
-        <h1 className="font-serif italic text-3xl sm:text-4xl text-[#1C1C1C] mb-1">
-          Reminisce.
-        </h1>
+        <h1 className="font-serif italic text-3xl sm:text-4xl text-[#1C1C1C] mb-1">Reminisce.</h1>
         <p className="font-mono text-[9px] sm:text-[10px] text-gray-400 uppercase tracking-widest">
           Analog Lab & Archive
         </p>
@@ -103,12 +88,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
                 Load Negative
               </p>
             </div>
-            <input
-              type="file"
-              className="hidden"
-              accept="image/*"
-              onChange={onUpload}
-            />
+            <input type="file" className="hidden" accept="image/*" onChange={onUpload} />
           </label>
         </div>
 
@@ -127,18 +107,14 @@ export const Sidebar: React.FC<SidebarProps> = ({
               >
                 <span
                   className={`font-mono text-[10px] sm:text-xs uppercase tracking-wider ${
-                    currentFilter.id === stock.id
-                      ? 'text-[#C75D46]'
-                      : 'text-[#1C1C1C]'
+                    currentFilter.id === stock.id ? 'text-[#C75D46]' : 'text-[#1C1C1C]'
                   }`}
                 >
                   {stock.name}
                 </span>
                 <div
                   className={`w-2 h-2 rounded-full flex-shrink-0 ${
-                    currentFilter.id === stock.id
-                      ? 'bg-[#C75D46]'
-                      : 'bg-transparent'
+                    currentFilter.id === stock.id ? 'bg-[#C75D46]' : 'bg-transparent'
                   }`}
                 />
               </button>
@@ -171,7 +147,9 @@ export const Sidebar: React.FC<SidebarProps> = ({
             {/* Grain */}
             <div>
               <div className="flex justify-between mb-1.5">
-                <label className="font-mono text-[9px] sm:text-[10px] text-gray-500 uppercase">Grain</label>
+                <label className="font-mono text-[9px] sm:text-[10px] text-gray-500 uppercase">
+                  Grain
+                </label>
                 <span className="font-mono text-[9px] sm:text-[10px] text-gray-400">{grain}%</span>
               </div>
               <input
@@ -190,8 +168,12 @@ export const Sidebar: React.FC<SidebarProps> = ({
             {/* Vignette */}
             <div>
               <div className="flex justify-between mb-1.5">
-                <label className="font-mono text-[9px] sm:text-[10px] text-gray-500 uppercase">Vignette</label>
-                <span className="font-mono text-[9px] sm:text-[10px] text-gray-400">{vignette}%</span>
+                <label className="font-mono text-[9px] sm:text-[10px] text-gray-500 uppercase">
+                  Vignette
+                </label>
+                <span className="font-mono text-[9px] sm:text-[10px] text-gray-400">
+                  {vignette}%
+                </span>
               </div>
               <input
                 type="range"
@@ -209,7 +191,9 @@ export const Sidebar: React.FC<SidebarProps> = ({
             {/* Warmth */}
             <div>
               <div className="flex justify-between mb-1.5">
-                <label className="font-mono text-[9px] sm:text-[10px] text-gray-500 uppercase">Warmth</label>
+                <label className="font-mono text-[9px] sm:text-[10px] text-gray-500 uppercase">
+                  Warmth
+                </label>
                 <span className="font-mono text-[9px] sm:text-[10px] text-gray-400">{warmth}%</span>
               </div>
               <input
@@ -253,9 +237,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
             <div>
               <div className="flex items-center gap-3 mb-2">
                 <button
-                  onClick={() =>
-                    setImagePosition(Math.max(0, imagePosition - 10))
-                  }
+                  onClick={() => setImagePosition(Math.max(0, imagePosition - 10))}
                   className="px-3 py-2 border border-[#E5E5E5] hover:border-gray-400 transition-colors active:scale-95"
                   aria-label="Move image up"
                 >
@@ -275,9 +257,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
                   />
                 </div>
                 <button
-                  onClick={() =>
-                    setImagePosition(Math.min(100, imagePosition + 10))
-                  }
+                  onClick={() => setImagePosition(Math.min(100, imagePosition + 10))}
                   className="px-3 py-2 border border-[#E5E5E5] hover:border-gray-400 transition-colors active:scale-95"
                   aria-label="Move image down"
                 >
@@ -289,8 +269,8 @@ export const Sidebar: React.FC<SidebarProps> = ({
                   {imagePosition === 50
                     ? 'Vertical: Center'
                     : imagePosition < 50
-                    ? `Vertical: Top (${imagePosition}%)`
-                    : `Vertical: Bottom (${imagePosition}%)`}
+                      ? `Vertical: Top (${imagePosition}%)`
+                      : `Vertical: Bottom (${imagePosition}%)`}
                 </span>
               </div>
             </div>
@@ -299,9 +279,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
             <div>
               <div className="flex items-center gap-3 mb-2">
                 <button
-                  onClick={() =>
-                    setImagePositionX(Math.max(0, imagePositionX - 10))
-                  }
+                  onClick={() => setImagePositionX(Math.max(0, imagePositionX - 10))}
                   className="px-3 py-2 border border-[#E5E5E5] hover:border-gray-400 transition-colors active:scale-95"
                   aria-label="Move image left"
                 >
@@ -321,9 +299,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
                   />
                 </div>
                 <button
-                  onClick={() =>
-                    setImagePositionX(Math.min(100, imagePositionX + 10))
-                  }
+                  onClick={() => setImagePositionX(Math.min(100, imagePositionX + 10))}
                   className="px-3 py-2 border border-[#E5E5E5] hover:border-gray-400 transition-colors active:scale-95"
                   aria-label="Move image right"
                 >
@@ -335,8 +311,8 @@ export const Sidebar: React.FC<SidebarProps> = ({
                   {imagePositionX === 50
                     ? 'Horizontal: Center'
                     : imagePositionX < 50
-                    ? `Horizontal: Left (${imagePositionX}%)`
-                    : `Horizontal: Right (${imagePositionX}%)`}
+                      ? `Horizontal: Left (${imagePositionX}%)`
+                      : `Horizontal: Right (${imagePositionX}%)`}
                 </span>
               </div>
             </div>

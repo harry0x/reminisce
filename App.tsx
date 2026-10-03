@@ -5,14 +5,7 @@ import { toBlob } from 'html-to-image';
 import { Sidebar } from './components/Sidebar';
 import PhotoCard from './components/PhotoCard';
 import { FILM_STOCKS, PAPERS, ASPECT_RATIOS, FRAMES } from './constants';
-import {
-  FilmStock,
-  PaperType,
-  AspectRatio,
-  PhotoMetadata,
-  FontFamily,
-  FrameType,
-} from './types';
+import { FilmStock, PaperType, AspectRatio, PhotoMetadata, FontFamily, FrameType } from './types';
 import { ArrowDownToLine, Loader2, Copy, RotateCcw, Undo2, Redo2 } from 'lucide-react';
 
 const getRandomImageUrl = () => {
@@ -60,12 +53,12 @@ const App: React.FC = () => {
   const [fontFamily, setFontFamily] = useState<FontFamily>('serif');
   const [imagePosition, setImagePosition] = useState<number>(50);
   const [imagePositionX, setImagePositionX] = useState<number>(50);
-  
+
   // New Granular Controls
   const [grain, setGrain] = useState<number>(50); // 0-100
   const [vignette, setVignette] = useState<number>(20); // 0-100
   const [warmth, setWarmth] = useState<number>(0); // 0-100
-  
+
   // Frame Style
   const [frame, setFrame] = useState<FrameType>(FRAMES[0]);
 
@@ -103,15 +96,36 @@ const App: React.FC = () => {
       return;
     }
     const currentState: SettingsState = {
-      filter, paper, aspectRatio, caption, fontFamily,
-      imagePosition, imagePositionX, grain, vignette, warmth, frame
+      filter,
+      paper,
+      aspectRatio,
+      caption,
+      fontFamily,
+      imagePosition,
+      imagePositionX,
+      grain,
+      vignette,
+      warmth,
+      frame,
     };
     historyRef.current = [...historyRef.current.slice(-19), currentState];
     setHistory(historyRef.current);
     // Clear redo stack on new action
     redoRef.current = [];
     setRedoStack([]);
-  }, [filter, paper, aspectRatio, caption, fontFamily, imagePosition, imagePositionX, grain, vignette, warmth, frame]);
+  }, [
+    filter,
+    paper,
+    aspectRatio,
+    caption,
+    fontFamily,
+    imagePosition,
+    imagePositionX,
+    grain,
+    vignette,
+    warmth,
+    frame,
+  ]);
 
   // Apply a state
   const applyState = useCallback((state: SettingsState) => {
@@ -132,11 +146,11 @@ const App: React.FC = () => {
   // Undo function
   const handleUndo = useCallback(() => {
     if (historyRef.current.length < 2) return;
-    
+
     const currentState = historyRef.current.pop()!;
     redoRef.current = [...redoRef.current, currentState];
     setRedoStack([...redoRef.current]);
-    
+
     const prevState = historyRef.current[historyRef.current.length - 1];
     if (prevState) {
       applyState(prevState);
@@ -147,10 +161,10 @@ const App: React.FC = () => {
   // Redo function
   const handleRedo = useCallback(() => {
     if (redoRef.current.length === 0) return;
-    
+
     const nextState = redoRef.current.pop()!;
     setRedoStack([...redoRef.current]);
-    
+
     historyRef.current = [...historyRef.current, nextState];
     setHistory([...historyRef.current]);
     applyState(nextState);
@@ -175,7 +189,20 @@ const App: React.FC = () => {
   useEffect(() => {
     const timer = setTimeout(saveToHistory, 500);
     return () => clearTimeout(timer);
-  }, [filter, paper, aspectRatio, caption, fontFamily, imagePosition, imagePositionX, grain, vignette, warmth, frame, saveToHistory]);
+  }, [
+    filter,
+    paper,
+    aspectRatio,
+    caption,
+    fontFamily,
+    imagePosition,
+    imagePositionX,
+    grain,
+    vignette,
+    warmth,
+    frame,
+    saveToHistory,
+  ]);
 
   // Load initial image and convert to base64 to avoid CORS issues on export
   useEffect(() => {
@@ -210,7 +237,7 @@ const App: React.FC = () => {
   const handleImageUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files[0]) {
       const file = e.target.files[0];
-      
+
       // Load Image
       const reader = new FileReader();
       reader.onload = (event) => {
@@ -225,16 +252,18 @@ const App: React.FC = () => {
       const randomIso = [100, 200, 400, 800, 1600][Math.floor(Math.random() * 5)];
       const randomAperture = [1.4, 1.8, 2.0, 2.8, 4.0, 5.6][Math.floor(Math.random() * 6)];
       const randomShutter = [60, 125, 250, 500, 1000][Math.floor(Math.random() * 5)];
-      
+
       const newMetadata: PhotoMetadata = {
         iso: `ISO ${randomIso}`,
         aperture: `ƒ/${randomAperture}`,
         shutterSpeed: `1/${randomShutter}`,
-        date: new Date().toLocaleDateString('en-US', {
-          month: 'short',
-          day: 'numeric',
-          year: 'numeric',
-        }).toUpperCase(),
+        date: new Date()
+          .toLocaleDateString('en-US', {
+            month: 'short',
+            day: 'numeric',
+            year: 'numeric',
+          })
+          .toUpperCase(),
       };
 
       setMetadata(newMetadata);
@@ -242,28 +271,32 @@ const App: React.FC = () => {
       // Extract EXIF Data
       try {
         const tags = await ExifReader.load(file);
-        
+
         // Update with real data if available
         if (tags['ISOSpeedRatings']?.description) {
           newMetadata.iso = `ISO ${tags['ISOSpeedRatings'].description}`;
         }
-        
+
         if (tags['FNumber']?.description) {
           newMetadata.aperture = `ƒ/${parseFloat(tags['FNumber'].description).toFixed(1)}`;
         }
-        
+
         if (tags['ExposureTime']?.description) {
           newMetadata.shutterSpeed = `${tags['ExposureTime'].description}`;
         }
-        
+
         if (tags['DateTimeOriginal']?.description) {
-          const date = new Date(tags['DateTimeOriginal'].description.replace(/:/g, '-').replace(' ', 'T'));
+          const date = new Date(
+            tags['DateTimeOriginal'].description.replace(/:/g, '-').replace(' ', 'T'),
+          );
           if (!isNaN(date.getTime())) {
-            newMetadata.date = date.toLocaleDateString('en-US', {
-              month: 'short',
-              day: 'numeric',
-              year: 'numeric',
-            }).toUpperCase();
+            newMetadata.date = date
+              .toLocaleDateString('en-US', {
+                month: 'short',
+                day: 'numeric',
+                year: 'numeric',
+              })
+              .toUpperCase();
           }
         }
 
@@ -275,43 +308,46 @@ const App: React.FC = () => {
     }
   };
 
-  const handleExport = useCallback(async (e?: React.MouseEvent) => {
-    if (e) {
-      e.preventDefault();
-      e.stopPropagation();
-    }
-    if (cardRef.current === null) return;
+  const handleExport = useCallback(
+    async (e?: React.MouseEvent) => {
+      if (e) {
+        e.preventDefault();
+        e.stopPropagation();
+      }
+      if (cardRef.current === null) return;
 
-    setIsExporting(true);
+      setIsExporting(true);
 
-    try {
-      // Use toBlob instead of toPng to save memory (Base64 is 33% larger)
-      const blob = await toBlob(cardRef.current, {
-        cacheBust: true,
-        pixelRatio: 2, 
-        skipAutoScale: true,
-        type: 'image/png',
-      });
+      try {
+        // Use toBlob instead of toPng to save memory (Base64 is 33% larger)
+        const blob = await toBlob(cardRef.current, {
+          cacheBust: true,
+          pixelRatio: 2,
+          skipAutoScale: true,
+          type: 'image/png',
+        });
 
-      if (!blob) throw new Error('Failed to generate image blob');
+        if (!blob) throw new Error('Failed to generate image blob');
 
-      const url = URL.createObjectURL(blob);
-      const link = document.createElement('a');
-      link.download = `reminisce-export-${Date.now()}.png`;
-      link.href = url;
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
-      
-      // Clean up the object URL after a small delay to ensure download starts
-      setTimeout(() => URL.revokeObjectURL(url), 100);
-    } catch (err) {
-      console.error('Failed to export image', err);
-      showToast('Export failed');
-    } finally {
-      setIsExporting(false);
-    }
-  }, [cardRef, showToast]);
+        const url = URL.createObjectURL(blob);
+        const link = document.createElement('a');
+        link.download = `reminisce-export-${Date.now()}.png`;
+        link.href = url;
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+
+        // Clean up the object URL after a small delay to ensure download starts
+        setTimeout(() => URL.revokeObjectURL(url), 100);
+      } catch (err) {
+        console.error('Failed to export image', err);
+        showToast('Export failed');
+      } finally {
+        setIsExporting(false);
+      }
+    },
+    [cardRef, showToast],
+  );
 
   // Copy to Clipboard
   const [isCopying, setIsCopying] = useState(false);
@@ -330,9 +366,7 @@ const App: React.FC = () => {
 
       if (!blob) throw new Error('Failed to generate image blob');
 
-      await navigator.clipboard.write([
-        new ClipboardItem({ 'image/png': blob })
-      ]);
+      await navigator.clipboard.write([new ClipboardItem({ 'image/png': blob })]);
 
       showToast('Copied to clipboard');
     } catch (err) {
@@ -393,9 +427,7 @@ const App: React.FC = () => {
       {/* Header - Top on mobile, inside sidebar on desktop */}
       <header className="md:hidden w-full bg-white border-b border-[#E5E5E5] flex-shrink-0 z-30 sticky top-0">
         <div className="p-4 sm:p-6">
-          <h1 className="font-serif italic text-3xl sm:text-4xl text-[#1C1C1C] mb-1">
-            Reminisce.
-          </h1>
+          <h1 className="font-serif italic text-3xl sm:text-4xl text-[#1C1C1C] mb-1">Reminisce.</h1>
           <p className="font-mono text-[9px] sm:text-[10px] text-gray-400 uppercase tracking-widest">
             Analog Lab & Archive
           </p>

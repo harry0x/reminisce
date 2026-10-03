@@ -7,16 +7,24 @@
 }
 
 @media (max-width: 640px) {
-  :root { --card-scale: 0.55; }
+  :root {
+    --card-scale: 0.55;
+  }
 }
 @media (min-width: 641px) and (max-width: 768px) {
-  :root { --card-scale: 0.7; }
+  :root {
+    --card-scale: 0.7;
+  }
 }
 @media (min-width: 769px) and (max-width: 1024px) {
-  :root { --card-scale: 0.85; }
+  :root {
+    --card-scale: 0.85;
+  }
 }
 @media (min-width: 1025px) {
-  :root { --card-scale: 1; }
+  :root {
+    --card-scale: 1;
+  }
 }
 
 ::-webkit-scrollbar {
@@ -43,8 +51,8 @@
 
 /* Film Strip Border Effect */
 .film-strip-border {
-  --hole-color: rgba(0,0,0,0.2);
-  --border-color: rgba(0,0,0,0.1);
+  --hole-color: rgba(0, 0, 0, 0.2);
+  --border-color: rgba(0, 0, 0, 0.1);
   padding-left: 36px !important;
   padding-right: 36px !important;
   position: relative;
@@ -76,8 +84,8 @@
 }
 
 .film-strip-border-horizontal {
-  --hole-color: rgba(0,0,0,0.2);
-  --border-color: rgba(0,0,0,0.1);
+  --hole-color: rgba(0, 0, 0, 0.2);
+  --border-color: rgba(0, 0, 0, 0.1);
   padding-top: 36px !important;
   padding-bottom: 36px !important;
   position: relative;
@@ -111,6 +119,8 @@
 /* Polaroid Border Effect */
 .polaroid-border {
   padding: 12px 12px 56px 12px !important;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.12), 0 1px 3px rgba(0,0,0,0.08);
+  box-shadow:
+    0 4px 20px rgba(0, 0, 0, 0.12),
+    0 1px 3px rgba(0, 0, 0, 0.08);
   border-radius: 2px !important;
 }
