@@ -1,22 +1,36 @@
+<p align="center">
+  <img src="assets/reminisce-screenshot.png" alt="Reminisce editor — controls sidebar on the left, live photo card preview on the right" width="100%" />
+</p>
+
 <div align="center">
   <h1>Reminisce.</h1>
   <p><em>Analog Lab & Archive</em></p>
   <p>Transform your photos into beautiful analog film-style prints with customizable film stocks, paper types, and typography.</p>
   
   <p>
+    <a href="https://reminisce-brown.vercel.app/">
+      <img src="https://img.shields.io/badge/Live-Demo-000000?style=for-the-badge&logo=vercel&logoColor=white" alt="Live Demo" />
+    </a>
     <a href="https://github.com/harry0x/reminisce">
       <img src="https://img.shields.io/badge/GitHub-Repository-181717?style=for-the-badge&logo=github" alt="GitHub Repository" />
     </a>
   </p>
+
+  <p>🌐 <strong>Live:</strong> <a href="https://reminisce-brown.vercel.app/">reminisce-brown.vercel.app</a></p>
 </div>
 
 ---
 
-## 📍 Repository
+## 🎬 Video Tutorial
 
-**GitHub**: [https://github.com/harry0x/reminisce](https://github.com/harry0x/reminisce)
+Watch a full walkthrough of Reminisce — uploading a photo, picking a film stock, fine-tuning effects, framing, and exporting your print.
+
+<video src="assets/reminisce-tutorial.mp4" autoplay muted loop playsinline controls width="100%"></video>
+
+▶️ **[Watch / download the tutorial video](assets/reminisce-tutorial.mp4)**
 
 ---
+
 
 ## 📸 About
 
@@ -38,6 +52,7 @@
 - **Paper Types** - Select from different paper bases (Alabaster, Exhibition White, Matte Black, Kraft)
 - **Custom Typography** - Add captions with different font styles (Serif, Script, Mono)
 - **Aspect Ratios** - Multiple formats including 1:1, 4:5, 16:9, and 2:3
+- **Image Position** - Reframe your photo inside the print with vertical and horizontal sliders (plus step buttons)
 
 #### 🚀 Productivity
 - **Undo/Redo** - Full history with `Ctrl+Z` / `Ctrl+Shift+Z` support
@@ -51,12 +66,6 @@
 - **Drag & Drop** - Easy image upload
 
 ## 🚀 Getting Started
-
-### Prerequisites
-
-- **Node.js** (v16 or higher recommended)
-- **npm** or **yarn**
-
 ### Installation
 
 1. **Clone the repository**
@@ -97,32 +106,6 @@ To preview the production build:
 npm run preview
 ```
 
-## 🛠️ Tech Stack
-
-- **React 19** - UI library
-- **TypeScript** - Type safety
-- **Vite** - Build tool and dev server
-- **Tailwind CSS** - Styling
-- **html-to-image** - Image export functionality
-- **ExifReader** - EXIF metadata extraction
-- **Lucide React** - Icons
-
-## 📁 Project Structure
-
-```
-reminisce/
-├── components/
-│   ├── PhotoCard.tsx      # Main photo card component
-│   └── Sidebar.tsx        # Control panel sidebar
-├── App.tsx                # Main application component
-├── constants.ts           # Film stocks, papers, aspect ratios, frames
-├── types.ts               # TypeScript type definitions
-├── index.css              # Global styles & frame effects
-├── index.html             # HTML entry point
-├── index.tsx              # React entry point
-└── vite.config.ts         # Vite configuration
-```
-
 ## 🎨 Usage
 
 1. **Upload an Image**
@@ -133,6 +116,7 @@ reminisce/
    - **Film Stock**: Apply color grading presets
    - **Frame Style**: Choose Standard, Film Strip, or Polaroid
    - **Format**: Select aspect ratio (1:1, 4:5, 2:3, 16:9)
+   - **Image Position**: Shift the crop vertically and horizontally
    - **Paper Base**: Pick background color/texture
    - **Effects**: Adjust Grain, Vignette, and Warmth
    - **Inscription**: Add caption with custom typography
@@ -169,7 +153,7 @@ The app is fully responsive with a mobile-first design:
 
 ## 📄 License
 
-This project is private and proprietary.
+This project is licensed under the [MIT License](LICENSE).
 
 ## 🔗 Links
 
@@ -186,5 +170,5 @@ This project is private and proprietary.
 ---
 
 <div align="center">
-  <p>Made with ❤️ for analog photography enthusiasts</p>
+  <p>Made with ❤️ by <a href="https://github.com/harry0x">harry0x</a></p>
 </div>
