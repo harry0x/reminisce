@@ -68,9 +68,6 @@ const PhotoCard: React.FC<PhotoCardProps> = ({
 
   // Determine footer positioning
   const isPolaroid = frame.id === 'polaroid';
-  const footerClass = isPolaroid
-    ? 'absolute bottom-4 left-4 right-4 px-4'
-    : 'w-full flex justify-between items-end px-1 mt-1';
 
   return (
     <div

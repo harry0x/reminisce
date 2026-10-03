@@ -301,7 +301,7 @@ const App: React.FC = () => {
         }
 
         setMetadata({ ...newMetadata }); // Trigger re-render with final data
-      } catch (error) {
+      } catch {
         console.log('No EXIF data found, using random analog values');
         // Already set to random above, so we're good!
       }
